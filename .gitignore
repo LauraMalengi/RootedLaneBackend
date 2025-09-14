@@ -9,7 +9,6 @@ logs/
 coverage/
 npm-debug.log*
 yarn-error.log*
-package-lock.json
 yarn.lock
 *.sqlite
 *.sqlite3
