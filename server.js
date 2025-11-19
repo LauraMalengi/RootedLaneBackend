@@ -10,10 +10,12 @@ const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI || process.env.MONGO || process.env.URI || process.env.uri;
 
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type']
+  origin: ['http://localhost:5173', 'http://rootedlane1.s3-website-us-east-1.amazonaws.com'],
+  methods: ['GET','POST','PUT','DELETE'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }));
+
 
 app.use(express.json());
 
