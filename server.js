@@ -198,5 +198,4 @@ function makeResourceRoutes(name) {
 ].forEach(makeResourceRoutes);
 
 app.use('/api/mock', mockRouter);
-
 module.exports = app;
