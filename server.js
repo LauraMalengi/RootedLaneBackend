@@ -42,7 +42,17 @@ app.use(
 );
 
 // Preflight support
-app.options("*", cors());
+app.options("*", (req, res) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(200);
+});
+
 
 // ---- DATABASE CONNECT ----
 let dbClient = null;
@@ -70,9 +80,10 @@ if (require.main === module) {
   (async () => {
     try {
       await connectToMongoOnce();
-      app.listen(PORT, () =>
-        console.log(`🚀 Server running at http://localhost:${PORT}`)
-      );
+    app.listen(PORT, "0.0.0.0", () =>
+      console.log(`🚀 Server running at http://98.95.166.176:${PORT}`)
+    );
+
     } catch (err) {
       console.error("Server failed to start:", err);
       process.exit(1);
