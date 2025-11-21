@@ -14,10 +14,10 @@ const MONGODB_URI =
   process.env.URI ||
   process.env.uri;
 
-// ---- FIX 1: REQUIRED MIDDLEWARE ----
+
 app.use(express.json());
 
-// ---- FIX 2: CORS CONFIG (Correct + Complete) ----
+
 const allowedOrigins = [
   "http://www.rootedlane1.com.s3-website-us-east-1.amazonaws.com",
   "http://rootedlane1.com.s3-website-us-east-1.amazonaws.com",
